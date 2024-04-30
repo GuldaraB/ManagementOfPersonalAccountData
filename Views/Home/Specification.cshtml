@@ -1,0 +1,31 @@
+﻿@model PersonalAccount
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_layout";
+}
+
+<div class="topnav">
+    <h4>Номер - @Model.Id</h4>
+    <h4>Номер лицевого счета - @Model.NumberPA</h4>
+    <h4>Дата начала действия - @Model.StartDate</h4>
+    <h4>Дата окончания действия - @Model.EndDate</h4>
+    <h4>Адрес - @Model.Address</h4>
+    <h4>Площадь помещения - @Model.RoomArea</h4>
+    @if (@Model.Residents != null & @Model.Residents.Count != 0)
+    {
+        @foreach (var resident in Model.Residents)
+        {
+            <h4>
+                Проживающие -            
+            <tr>
+                <td>@resident.Id</td>
+                <td>@resident.Surname</td>
+                <td>@resident.Name</td>
+                <td>@resident.Fatherland</td>
+            </tr>
+            </h4>
+        }
+    }
+
+</div>

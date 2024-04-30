@@ -1,0 +1,30 @@
+﻿@model PersonalAccountResidentVM
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_layout";
+}
+
+<h2>Заполните форму для добавления жителя</h2>
+<div class="row">
+    <div class="toDo_add_form col-md-6">
+        <form asp-action="AddResident" asp-controller="Home" method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form_row">
+                <input id="name" type="hidden" asp-for="@Model.PersonalAccountId">
+                <label for="name">
+                    Фамилия
+                    <input id="name" type="text" asp-for="@Model.Resident.Surname" />
+                </label>
+                <label for="name">
+                    Имя
+                    <input id="name" type="text" asp-for="@Model.Resident.Name" />
+                </label>
+                <label for="name">
+                    Отчество
+                    <input id="name" type="text" asp-for="@Model.Resident.Fatherland" />
+                </label>               
+                <button class="btn btn-outline-warning">Добавить</button>
+            </div>
+        </form>
+    </div>

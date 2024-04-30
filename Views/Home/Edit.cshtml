@@ -1,0 +1,41 @@
+﻿@model PersonalAccount
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_layout";
+}
+
+<h2>Редактировать лицевой счет</h2>
+<div class="row">
+    <div class="account_add_form col-md-6">
+        <form asp-action="Edit" asp-controller="Home" method="post">
+            <div class="form_row">
+                <input id="name" type="hidden" asp-for="@Model.Id">
+                <label for="name">
+                    Номер лицевого счета
+                    <input id="name" type="text" asp-for="@Model.NumberPA" readonly>
+                </label>               
+               
+
+                <label for="date">
+                    Дата начала действия
+                    <input id="date" type="datetime" asp-for="@Model.StartDate" readonly>
+                </label>
+
+                <label for="dateEnd">
+                    Дата окончания действия
+                    <input id="dateEnd" type="datetime" asp-for="@Model.EndDate">
+                </label>
+                <label for="address">
+                    Адрес
+                    <input id="address" type="text" asp-for="@Model.Address">
+                </label>
+                <label for="roomArea">
+                    Площадь помещения
+                    <input id="roomArea" type="text" asp-for="@Model.RoomArea">
+                </label>
+                <button class="btn btn-outline-warning">Редактировать</button>
+            </div>
+        </form>
+    </div>
+</div>

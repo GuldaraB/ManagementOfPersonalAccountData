@@ -1,0 +1,71 @@
+﻿@model FilterListViewModel
+@inject PersonalAccountContext Context;
+
+@{
+    var toDo = Context.PersonalAccounts;
+}
+
+@{
+    ViewBag.Title = "Лицевые счета";
+}
+
+<h2>Лицевые счета</h2>
+
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Адрес: </label>
+        @Html.TextBox("address", Model.Address, htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn btn-outline-warning" />
+    </div>
+    <div class="form-inline form-group">
+        <label class="control-label">Фамилия проживающего: </label>
+        @Html.TextBox("name", Model.Name, htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn btn-outline-warning" />
+    </div>
+    <div class="form-inline form-group">
+        <label class="control-label">Только ЛС с проживающими: </label>
+
+        <select name="id">
+            <option disabled selected>Выберите</option>
+            <option value=1>Да</option>
+            <option value=2>Нет</option>
+        </select>
+        <input type="submit" value="Фильтр" class="btn btn-outline-warning" />
+    </div>
+    <div class="form-inline form-group">
+        <label class="control-label">Только открытые на указанную дату ЛС :  </label>
+        <input id="date" type="datetime-local" name="date" class="form-control" />
+        <input type="submit" value="Фильтр" class="btn btn-outline-warning" />
+    </div>
+</form>
+
+<table class="table table-striped">
+    <tr>
+        <th>Номер личного счета</th>
+        <th>Адрес</th>
+        <th>Дата начала действия</th>
+        <th>Дата окончания действия</th>
+        <th>Площадь помещения</th>
+    </tr>
+
+    @foreach (var item in Model.PersonalAccount)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberPA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomArea)
+            </td>
+        </tr>
+    }
+</table>
